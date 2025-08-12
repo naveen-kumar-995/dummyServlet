@@ -1,0 +1,5 @@
+com\pinnacle\dummyServlet\controller\MainController.class
+com\pinnacle\dummyServlet\dao\GoFlipoRequestPayload.class
+com\pinnacle\dummyServlet\DummyServletApplication.class
+com\pinnacle\dummyServlet\dao\AuthCodeResponse.class
+com\pinnacle\dummyServlet\dao\GoFlipoResponse.class
