@@ -24,7 +24,7 @@ public class MainController {
         String uuid = UUID.randomUUID().toString();
         AuthCodeResponse authData = new AuthCodeResponse(uuid);
         try {
-            Thread.sleep(50);
+            Thread.sleep(100);
         } catch (Exception e) {
 
         }
