@@ -2,7 +2,6 @@ package com.pinnacle.dummyServlet.controller;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.pinnacle.dummyServlet.dao.AuthCodeResponse;
 import com.pinnacle.dummyServlet.dao.CleverTapResponse;
 import com.pinnacle.dummyServlet.dao.GoFlipoResponse;
-import com.pinnacle.dummyServlet.dao.UnProcessed;
+
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -66,6 +65,6 @@ public class MainController {
     public CleverTapResponse getCleverTapSuccessResponse(@RequestBody String request)
     {
         log.debug("Received Json:  {}",request);
-        return new CleverTapResponse("success", "1" , new UnProcessed(new ArrayList<>()));
+        return new CleverTapResponse("success", "1" , new ArrayList<>());
     }
 }
