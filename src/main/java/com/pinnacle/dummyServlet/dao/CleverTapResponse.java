@@ -1,0 +1,7 @@
+package com.pinnacle.dummyServlet.dao;
+
+import java.util.List;
+
+public record CleverTapResponse(String status, String processed, UnProcessed unProcessed) {
+
+}
