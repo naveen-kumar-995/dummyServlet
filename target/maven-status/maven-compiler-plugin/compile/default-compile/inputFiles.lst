@@ -1,5 +1,7 @@
 D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\controller\MainController.java
 D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\dao\AuthCodeResponse.java
+D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\dao\CleverTapResponse.java
 D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\dao\GoFlipoRequestPayload.java
 D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\dao\GoFlipoResponse.java
+D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\dao\UnProcessed.java
 D:\PinnacleProject\dummyServlet\src\main\java\com\pinnacle\dummyServlet\DummyServletApplication.java
