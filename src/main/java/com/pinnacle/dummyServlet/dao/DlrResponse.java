@@ -1,8 +1,9 @@
-package com.itextos.beacon.httpclienthandover.clevertap.model;
+package com.pinnacle.dummyServlet.dao;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.List;
 
 /**
  * Represents the top-level structure of the customer's DLR response.

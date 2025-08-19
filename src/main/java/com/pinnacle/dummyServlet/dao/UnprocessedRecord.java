@@ -1,4 +1,4 @@
-package com.itextos.beacon.httpclienthandover.clevertap.model;
+package com.pinnacle.dummyServlet.dao;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;

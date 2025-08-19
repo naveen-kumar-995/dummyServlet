@@ -2,8 +2,11 @@ package com.pinnacle.dummyServlet.controller;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,13 +17,18 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.pinnacle.dummyServlet.dao.AuthCodeResponse;
 import com.pinnacle.dummyServlet.dao.CleverTapResponse;
+import com.pinnacle.dummyServlet.dao.DataDetail;
+import com.pinnacle.dummyServlet.dao.DlrResponse;
 import com.pinnacle.dummyServlet.dao.GoFlipoResponse;
+import com.pinnacle.dummyServlet.dao.RecordData;
+import com.pinnacle.dummyServlet.dao.UnprocessedRecord;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Slf4j
 public class MainController {
+
+    private static final Logger log = LoggerFactory.getLogger(MainController.class);
 
 
     @PostMapping("/api/main/scrubbing-logs")
@@ -67,4 +75,16 @@ public class MainController {
         log.debug("Received Json:  {}",request);
         return new CleverTapResponse("success", "1" , new ArrayList<>());
     }
+
+    @PostMapping("/callback/fail")
+    public DlrResponse getCleverTapFailResponse(@RequestBody JsonNode request) {
+        log.debug("Received JsonString:  {}", request);
+        UnprocessedRecord unprocessedRecord = new UnprocessedRecord("fail",500, "Internal Server Error", request);
+
+        List<UnprocessedRecord> unprocessedRecordsList = new ArrayList<>();
+        unprocessedRecordsList.add(unprocessedRecord);
+
+        return new DlrResponse("fail", 0, unprocessedRecordsList);
+    }
+
 }

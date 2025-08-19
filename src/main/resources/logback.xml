@@ -8,13 +8,13 @@
 
     <!-- Rolling File Appender for general logging -->
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>kannel.log</file>
+        <file>app.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%method] %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- Rotate daily and when the file size exceeds 1GB -->
-            <fileNamePattern>kannel.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>1GB</maxFileSize>
             <!-- Keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
@@ -25,7 +25,7 @@
 
     <!-- Rolling File Appender for ERROR logs -->
     <appender name="ERROR_ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/opt/apps/logs/error_ch-core.log</file>
+        <file>error_app.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%method] %msg%n</pattern>
         </encoder>
@@ -34,7 +34,7 @@
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- Rotate daily and when the file size exceeds 1GB -->
-            <fileNamePattern>/opt/apps/logs/error_ch-core.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>error_app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>1GB</maxFileSize>
             <!-- Keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
@@ -45,13 +45,13 @@
 
     <!-- Rolling File Appender for Kafka logs -->
     <appender name="KAFKA_ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/opt/apps/logs/kafka_ch-core.log</file>
+        <file>kafka_app.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%method] %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!-- Rotate daily and when the file size exceeds 1GB -->
-            <fileNamePattern>/opt/apps/logs/kafka_ch-core.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>kafka_app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>1GB</maxFileSize>
             <!-- Keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
