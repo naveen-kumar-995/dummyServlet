@@ -76,15 +76,35 @@ public class MainController {
         return new CleverTapResponse("success", "1" , new ArrayList<>());
     }
 
+//    @PostMapping("/callback/fail")
+//    public DlrResponse getCleverTapFailResponse(@RequestBody JsonNode request) {
+//        log.debug("Received JsonString:  {}", request);
+//        UnprocessedRecord unprocessedRecord = new UnprocessedRecord("fail",500, "Internal Server Error", request);
+//
+//        List<UnprocessedRecord> unprocessedRecordsList = new ArrayList<>();
+//        unprocessedRecordsList.add(unprocessedRecord);
+//
+//        return new DlrResponse("fail", 0, unprocessedRecordsList);
+//    }
+
     @PostMapping("/callback/fail")
     public DlrResponse getCleverTapFailResponse(@RequestBody JsonNode request) {
-        log.debug("Received JsonString:  {}", request);
-        UnprocessedRecord unprocessedRecord = new UnprocessedRecord("fail",500, "Internal Server Error", request);
+        log.debug("Received JsonString: {}", request);
+
+        // unwrap array -> object
+        JsonNode normalizedRequest = request;
+        if (request.isArray() && request.size() > 0) {
+            normalizedRequest = request.get(0); // take first element
+        }
+
+        UnprocessedRecord unprocessedRecord =
+                new UnprocessedRecord("fail", 500, "Internal Server Error", normalizedRequest);
 
         List<UnprocessedRecord> unprocessedRecordsList = new ArrayList<>();
         unprocessedRecordsList.add(unprocessedRecord);
 
         return new DlrResponse("fail", 0, unprocessedRecordsList);
     }
+
 
 }
