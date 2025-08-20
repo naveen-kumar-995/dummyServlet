@@ -70,10 +70,13 @@ public class MainController {
     }
 
     @PostMapping("/callback/success")
-    public CleverTapResponse getCleverTapSuccessResponse(@RequestBody String request)
+    public DlrResponse getCleverTapSuccessResponse(@RequestBody String request)
     {
         log.debug("Received Json:  {}",request);
-        return new CleverTapResponse("success", "1" , new ArrayList<>());
+
+        List<UnprocessedRecord> unprocessedRecordsList = new ArrayList<>();
+
+        return new DlrResponse("success", 1 ,unprocessedRecordsList);
     }
 
 //    @PostMapping("/callback/fail")
