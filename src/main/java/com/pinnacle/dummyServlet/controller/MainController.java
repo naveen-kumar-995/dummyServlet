@@ -110,4 +110,30 @@ public class MainController {
     }
 
 
+
+    @PostMapping("/callback/partial")
+    public DlrResponse getCleverTapPartialResponse(@RequestBody JsonNode request) {
+        log.debug("Received JsonString: {}", request);
+
+        // unwrap array -> object
+        JsonNode normalizedRequest = request;
+        if (request.isArray() && request.size() > 0) {
+            normalizedRequest = request.get(0); // take first element
+        }
+
+        UnprocessedRecord unprocessedRecord =
+                new UnprocessedRecord("fail", 400, "Internal Server Error", normalizedRequest);
+
+
+        UnprocessedRecord unprocessedRecord1 =
+                new UnprocessedRecord("fail", 500, "Internal Server Error", normalizedRequest);
+
+        List<UnprocessedRecord> unprocessedRecordsList = new ArrayList<>();
+        unprocessedRecordsList.add(unprocessedRecord);
+        unprocessedRecordsList.add(unprocessedRecord1);
+
+        return new DlrResponse("partial", 0, unprocessedRecordsList);
+    }
+
+
 }
