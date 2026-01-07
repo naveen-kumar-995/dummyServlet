@@ -1,10 +1,11 @@
+com\pinnacle\dummyServlet\dao\GoFlipoRequestPayload.class
+com\pinnacle\dummyServlet\dao\BasicResponse.class
+com\pinnacle\dummyServlet\dao\AuthCodeResponse.class
 com\pinnacle\dummyServlet\controller\MainController.class
 com\pinnacle\dummyServlet\dao\DlrResponse.class
-com\pinnacle\dummyServlet\dao\GoFlipoRequestPayload.class
 com\pinnacle\dummyServlet\dao\CleverTapResponse.class
 com\pinnacle\dummyServlet\dao\UnprocessedRecord.class
 com\pinnacle\dummyServlet\dao\DataDetail.class
 com\pinnacle\dummyServlet\dao\RecordData.class
 com\pinnacle\dummyServlet\DummyServletApplication.class
-com\pinnacle\dummyServlet\dao\AuthCodeResponse.class
 com\pinnacle\dummyServlet\dao\GoFlipoResponse.class
