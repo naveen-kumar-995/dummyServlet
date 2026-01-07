@@ -4,6 +4,7 @@ package com.pinnacle.dummyServlet.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.pinnacle.dummyServlet.dao.AuthCodeResponse;
+import com.pinnacle.dummyServlet.dao.BasicResponse;
 import com.pinnacle.dummyServlet.dao.CleverTapResponse;
 import com.pinnacle.dummyServlet.dao.DataDetail;
 import com.pinnacle.dummyServlet.dao.DlrResponse;
@@ -133,6 +135,18 @@ public class MainController {
         unprocessedRecordsList.add(unprocessedRecord1);
 
         return new DlrResponse("partial", 0, unprocessedRecordsList);
+    }
+
+    @PostMapping("callback/batch")
+    public BasicResponse getCallbackBatch(@RequestBody String s)
+    {
+        log.debug("Received  DLR: {}", s);
+        try {
+            TimeUnit.MILLISECONDS.sleep(50);
+        } catch (InterruptedException e) {
+            log.error("Interrupted exception " , e);
+        }
+        return new BasicResponse("Sucess");
     }
 
 
