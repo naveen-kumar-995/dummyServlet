@@ -3,6 +3,7 @@ package com.pinnacle.dummyServlet.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -149,5 +151,11 @@ public class MainController {
         return new BasicResponse("Sucess");
     }
 
+    @PostMapping("callback/batch/header")
+    public BasicResponse getCallbackBatchHeader(@RequestHeader Map<String, String> headers, @RequestBody String body) {
+        log.debug("Received headers: {}", headers);
+        log.debug("Received body: {}", body);
+        return new BasicResponse("Success");
+    }
 
 }
