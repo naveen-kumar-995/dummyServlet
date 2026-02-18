@@ -126,7 +126,7 @@ public class MainController {
         }
 
         UnprocessedRecord unprocessedRecord =
-                new UnprocessedRecord("fail", 500, "Internal Server Error", normalizedRequest);
+                new UnprocessedRecord("fail", 400, "Internal Server Error", normalizedRequest);
 
 
         UnprocessedRecord unprocessedRecord1 =
