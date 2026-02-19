@@ -151,14 +151,14 @@ public class MainController {
         return new BasicResponse("Sucess");
     }
 
-    @GetMapping("callback/batch")
-    public BasicResponse getCallback(@RequestBody String s)
-    {
-        log.debug("Received qs DLR: {}", s);
+    @GetMapping("/callback/batch")
+    public BasicResponse getCallback(@RequestParam Map<String, String> params) {
 
+        log.debug("Received GET DLR params: {}", params);
 
-        return new BasicResponse("Sucess");
+        return new BasicResponse("Success");
     }
+
 
     @PostMapping("callback/batch/header")
     public BasicResponse getCallbackBatchHeader(@RequestHeader Map<String, String> headers, @RequestBody String body) {
