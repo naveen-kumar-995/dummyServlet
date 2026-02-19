@@ -151,6 +151,15 @@ public class MainController {
         return new BasicResponse("Sucess");
     }
 
+    @GetMapping("callback/batch")
+    public BasicResponse getCallback(@RequestBody String s)
+    {
+        log.debug("Received qs DLR: {}", s);
+
+
+        return new BasicResponse("Sucess");
+    }
+
     @PostMapping("callback/batch/header")
     public BasicResponse getCallbackBatchHeader(@RequestHeader Map<String, String> headers, @RequestBody String body) {
         log.debug("Received headers: {}", headers);
