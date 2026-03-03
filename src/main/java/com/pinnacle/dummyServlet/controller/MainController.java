@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -149,6 +150,51 @@ public class MainController {
             log.error("Interrupted exception " , e);
         }
         return new BasicResponse("Sucess");
+    }
+
+    @PostMapping("loadtest/{sleep}")
+    public BasicResponse getLoadtest(
+            @PathVariable("sleep") String sleep,
+            @RequestBody(required = false) String body) {
+
+        log.debug("Received loadtest request. Sleep={}, Body={}", sleep, body);
+
+        long sleepMillis = parseSleepMillis(sleep);
+
+        if (sleepMillis > 0) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(sleepMillis);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); // Preserve interrupt flag
+                log.warn("Sleep interrupted", e);
+            }
+        }
+
+        return new BasicResponse("Success");
+    }
+
+
+    private long parseSleepMillis(String sleep) {
+        if (sleep == null || sleep.isBlank()) {
+            return 0;
+        }
+
+        try {
+            long value = Long.parseLong(sleep);
+
+            // Prevent negative or extreme values
+            if (value < 0) {
+                return 0;
+            }
+
+            // Optional safety cap (important for production)
+            long MAX_SLEEP = 30_000; // 30 seconds max
+            return Math.min(value, MAX_SLEEP);
+
+        } catch (NumberFormatException e) {
+//            log.warn("Invalid sleep value: {}", sleep);
+            return 0;
+        }
     }
 
     @GetMapping("/callback/batch")
