@@ -213,4 +213,10 @@ public class MainController {
         return new BasicResponse("Success");
     }
 
+    @GetMapping("cgi-bin/sendsms")
+    public BasicResponse getKannelUrlSuccess(@RequestParam Map<String, String> params)
+    {
+        return new BasicResponse("success");
+    }
+
 }
