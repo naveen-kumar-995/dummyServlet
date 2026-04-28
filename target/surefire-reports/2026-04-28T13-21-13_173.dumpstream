@@ -1,4 +1,4 @@
-# Created at 2026-04-04T14:51:05.808
+# Created at 2026-04-28T13:21:13.340
 Boot Manifest-JAR contains absolute paths in classpath 'D:\PinnacleProject\dummyServlet\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root

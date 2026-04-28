@@ -6,3 +6,6 @@ services:
     ports:
       - "8480:8080"
     restart: unless-stopped
+
+    logging:
+      driver: "none"
